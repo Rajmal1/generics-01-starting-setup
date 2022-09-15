@@ -21,3 +21,22 @@ function merge<T extends object, U extends object>(objA: T, objB: U) {
 const mergeObj = merge({ name: "Max", hobbies: ["Sports"] }, { age: 30 });
 
 console.log(mergeObj.age);
+
+interface Lenghty {
+  length: number;
+}
+
+function coutAndDescribe<T extends Lenghty>(element: T): [T, string] {
+  let descriptionText = "Got no value.";
+
+  if (element.length === 1) {
+    descriptionText = `Got 1 element`;
+  } else if (element.length > 1) {
+    descriptionText = `Got ${element.length} elements.`;
+  }
+  return [element, descriptionText];
+}
+
+// console.log(coutAndDescribe("Hi there!"));
+// console.log(coutAndDescribe(["Sports", "Cooking"]));
+console.log(coutAndDescribe([]));
